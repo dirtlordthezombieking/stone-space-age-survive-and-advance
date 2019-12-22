@@ -1,0 +1,35 @@
+Next build:
+·block models....60.0%
+ ·meshes.........✓
+ ·nodes..........✓
+ ·materials......✓
+ ·animations.....X
+ ·textures.......X
+·player model....60.0%
+ ·meshes.........✓
+ ·nodes..........✓
+ ·materials......✓
+ ·animations.....X
+ ·textures.......X
+·entities........25.0%
+ ·base class.....✓
+ ·models.........X
+ ·Ai.............X
+ ·data handling..X
+·ui..............25.0%
+ ·graphics.......50.0%
+  ·jump button...✓
+  ·dpad..........✓
+  ·settings/menu.X
+  .inventory.....X
+ ·function.......X
+·world gen.......62.5%
+ ·smooth terain...✓
+ ·caves...........50%
+  ·generation.....✓
+  ·smooothing.....X
+·gameplay.........X
+ ·collision.......X
+ ·motion..........X
+ ·mechanics.......X
+ ·gravity.........X
