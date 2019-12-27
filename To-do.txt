@@ -1,43 +1,35 @@
-Next build:
+Next build:      61.666%
 ·block models....60.00%
  ·meshes.........✓
  ·nodes..........✓
  ·materials......✓
- ·animations.....X
- ·textures.......X
+ ·animations.....00.00%
+ ·textures.......00.00%
 ·player model....60.00%
  ·meshes.........✓
  ·nodes..........✓
  ·materials......✓
- ·animations.....X
- ·textures.......X
+ ·animations.....00.00%
+ ·textures.......00.00%
 ·entities........25.00%
  ·base class.....✓
- ·models.........X
- ·Ai.............X
- ·data handling..X
-·ui..............31.25%
- ·graphics.......50.00%
+ ·models.........00.000%
+ ·Ai.............00.000%
+ ·data handling..00.000%
+·ui..............50.000%
+ ·graphics.......50.000%
   ·jump button...✓
   ·dpad..........✓
-  ·settings/menu.X
-  .inventory.....X
- ·function.......12.50%
-  ·jump button...X
-  ·dpad..........50.00%
-   ·rotation......✓
-   ·translation...X
-  ·settings/menu.X
-  .inventory.....X
-·world gen.......75.00%
- ·smooth terain..✓
- ·caves..........50.00%
-  ·generation....✓
-  ·smooothing....X
-·gameplay........62.50%
+  ·settings/menu.00.000%
+  .inventory.....00.000%
+ ·function.......50.000%
+  ·jump button...✓
+  ·dpad..........✓
+  ·settings/menu.00.000%
+  .inventory.....00.000%
+·world gen.......✓
+·gameplay........75.000%
  ·collision......✓
- ·motion.........50.00%
-  ·rotation......✓
-  ·translation...X
- ·mechanics......X
+ ·motion.........✓
+ ·mechanics......00.000%
  ·gravity........✓
