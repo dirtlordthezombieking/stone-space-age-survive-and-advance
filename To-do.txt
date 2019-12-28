@@ -1,20 +1,13 @@
-Next build:      61.666%
-·block models....60.00%
- ·meshes.........✓
- ·nodes..........✓
- ·materials......✓
- ·animations.....00.00%
- ·textures.......00.00%
-·player model....60.00%
- ·meshes.........✓
- ·nodes..........✓
- ·materials......✓
- ·animations.....00.00%
- ·textures.......00.00%
-·entities........25.00%
+Next build:      82.500%
+·block models....✓
+·player model....✓
+·entities........70.000%
  ·base class.....✓
- ·models.........00.000%
- ·Ai.............00.000%
+ ·models.........✓
+ ·definitions....✓
+ ·Ai.............50.000%
+  ·definitions...✓
+  ·hadling.......00.000%
  ·data handling..00.000%
 ·ui..............50.000%
  ·graphics.......50.000%
