@@ -1,4 +1,4 @@
-Next build:      82.500%
+Next build:      84.166%
 ·block models....✓
 ·player model....✓
 ·entities........70.000%
@@ -9,17 +9,19 @@ Next build:      82.500%
   ·definitions...✓
   ·hadling.......00.000%
  ·data handling..00.000%
-·ui..............50.000%
- ·graphics.......50.000%
+·ui..............60.000%
+ ·graphics.......60.000%
   ·jump button...✓
   ·dpad..........✓
-  ·settings/menu.00.000%
-  .inventory.....00.000%
- ·function.......50.000%
+  ·settings......00.000%
+  ·menu..........✓
+  ·inventory.....00.000%
+ ·function.......60.000%
   ·jump button...✓
   ·dpad..........✓
-  ·settings/menu.00.000%
-  .inventory.....00.000%
+  ·settings......00.000%
+  ·menu..........✓
+  ·inventory.....00.000%
 ·world gen.......✓
 ·gameplay........75.000%
  ·collision......✓
