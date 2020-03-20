@@ -28,3 +28,5 @@ Next build:      84.166%
  ·motion.........✓
  ·mechanics......00.000%
  ·gravity........✓
+
+Note(Fri March 20th 2020 5:21pm): If anyone has been keeping an eye on this then they have probably noticed that the development has slowed down I tend to get bursts of inspiration that last for a few weeks and then slow down on whatever the idea was (though sometimes the inspiration outlasts the idea like the rock paper scissors AI I made this afternoon) I will continue to work on this however as it is the first creation I have posted anywhere
