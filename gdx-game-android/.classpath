@@ -7,6 +7,6 @@
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
 	<classpathentry kind="lib" exported="true" path="libs/gdx.jar" />
-	
+	<classpathentry kind="lib" exported="true" path="libs/gdx-bullet-1.9.9.jar" />
 	<classpathentry kind="lib" exported="true" path="libs/gdx-backend-android.jar" />
 </classpath>
