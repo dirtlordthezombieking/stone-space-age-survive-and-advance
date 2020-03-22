@@ -1,0 +1,52 @@
+[
+	{
+		"model":"empty",
+		"loot":[],
+		"type":"void",
+		"id":"air",
+		"render_adj":true,
+		"render":false,
+		"collision":false
+	},
+	{
+		"model":"grass",
+		"loot":{
+			"plant fibre":[100,1,5]
+		},
+		"type":"plant",
+		"mine":[0.0,3.0],
+		"id":"grass",
+		"render_adj":true,
+		"render":true,
+		"collision":false
+	},
+	{
+		"model":"soil",
+		"loot":{
+			"soil":[100,1000,1000]
+		},
+		"type":"soft",
+		"mine":[0.0,0.5],
+		"id":"soil",
+		"render_adj":false,
+		"render":true,
+		"collision":true
+	},
+	{
+		"model":"stone",
+		"loot":{
+			"rocks":[100,100,1000],
+			"coal":[80,0,-1000],
+			"copper ore":[60,0,-1000],
+			"iron ore":[40,0,-1000],
+			"gold ore":[20,0,-1000],
+			"rocks":[100,-1000,1000]
+		},
+		"type":"hard",
+		"mine":[1.0,0.2],
+		"id":"stone",
+		"render_adj":false,
+		"render":true,
+		"collision":true
+	}
+]
