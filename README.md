@@ -19,6 +19,7 @@ Open simplex noise:
 ·home+license: https://gist.github.com/KdotJPG/b1270127455a94ac5d19#file-opensimplexnoise-java
 
 This project also uses the android specific libraries which use the Apache Software license 2.0
+
 This project also uses json_simple 1.1 which uses the Apache Software license 2.0
 
 
