@@ -23,4 +23,4 @@ This project also uses the android specific libraries which use the Apache Softw
 This project also uses json_simple 1.1 which uses the Apache Software license 2.0
 
 
-Note there are multiple programs out there called JSON simple I am simply using the one that comes with my compiler and providing the same information provided in the compilers legal information I do not know which one it is.
+Note there are multiple programs out there called JSON simple I am simply using the one that comes with the IDE i use and providing the same information provided in the IDEs legal information I do not know which one it is.
