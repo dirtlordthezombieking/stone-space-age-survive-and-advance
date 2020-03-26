@@ -1,36 +1,37 @@
-Next build:      69.375%
+Next build:      75.390625%
 ·block models....✓
 ·player model....✓
-·entities........70.000%
- ·base class.....✓
- ·models.........✓
- ·definitions....✓
- ·Ai.............50.000%
-  ·definitions...✓
-  ·hadling.......00.000%
- ·data handling..00.000%
-·ui..............60.000%
- ·graphics.......60.000%
+·entities........✓
+·ui..............65.000000%
+ ·graphics.......60.000000%
   ·jump button...✓
   ·dpad..........✓
-  ·settings......00.000%
+  ·settings......00.000000%
   ·menu..........✓
-  ·inventory.....00.000%
- ·function.......60.000%
+  ·inventory.....00.000000%
+ ·function.......70.000000%
   ·jump button...✓
   ·dpad..........✓
-  ·settings......00.000%
+  ·settings......00.000000%
   ·menu..........✓
-  ·inventory.....00.000%
+  ·inventory.....50.000000%
+   ·data.........✓
+   ·interaction..00.000000%
 ·world gen.......✓
-·gameplay........75.000%
+·gameplay........88.125000%
  ·collision......✓
  ·motion.........✓
- ·mechanics......00.000%
+ ·mechanics......52.500000%
+  ·crafting......00.000000%
+  ·digging.......✓
+  ·building......✓
+  ·combat........50.000000%
+   ·attacking....✓
+   ·defending....00.000000%
  ·gravity........✓
-·decoration......50.000%
+·decoration......50.000000%
  ·custom font....✓
- ·background.....00.000%
-·sound...........00.000%
+ ·background.....00.000000%
+·sound...........00.000000%
 
 Note(Fri March 20th 2020 5:21pm): If anyone has been keeping an eye on this then they have probably noticed that the development has slowed down I tend to get bursts of inspiration that last for a few weeks and then slow down on whatever the idea was (though sometimes the inspiration outlasts the idea like the rock paper scissors AI I made this afternoon) I will continue to work on this however as it is the first creation I have posted anywhere.
