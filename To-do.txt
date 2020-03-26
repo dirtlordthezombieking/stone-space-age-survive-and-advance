@@ -1,18 +1,18 @@
-Next build:      75.390625%
+Next build:      77.890625%
 ·block models....✓
 ·player model....✓
 ·entities........✓
-·ui..............65.000000%
- ·graphics.......60.000000%
+·ui..............85.000000%
+ ·graphics.......80.000000%
   ·jump button...✓
   ·dpad..........✓
-  ·settings......00.000000%
+  ·settings......✓
   ·menu..........✓
   ·inventory.....00.000000%
- ·function.......70.000000%
+ ·function.......90.000000%
   ·jump button...✓
   ·dpad..........✓
-  ·settings......00.000000%
+  ·settings......✓
   ·menu..........✓
   ·inventory.....50.000000%
    ·data.........✓
