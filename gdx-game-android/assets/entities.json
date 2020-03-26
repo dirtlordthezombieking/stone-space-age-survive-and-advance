@@ -1,35 +1,40 @@
 [
 	{
 		"name":"item",
-		"behaviors":{
-			"rotate":5.0
-			"pickup":2.0
+		"id":0,
+		"model":"item",
+		"behaviours":{
+			"rotate":5.0,
+			"pickup":2.0,
 			"gravity":1.0
 		}
 	},
 	{
 		"name":"block",
-		"behaviors":{
+		"id":1,
+		"model":"block",
+		"behaviours":{
 			"mine":0.0
 		}
 	},
 	{
 		"name":"tree",
-		"model":"tree"
+		"model":"tree",
+		"id":2,
 		"spawns_in":{
 			"grass":0.01
 		},
 		"loot":{
-			"logs":[100,50,100]
+			"logs":[100,50,100],
 			"plant fibre":[100,10,20]
 		},
-		"health":3
+		"health":3,
 		"attack_whitelist":[
 			"axe",
 			"saw",
 			"hand"
-		]
-		"behaviors":{
+		],
+		"behaviours":{
 			"support":1.0
 		}
 	}

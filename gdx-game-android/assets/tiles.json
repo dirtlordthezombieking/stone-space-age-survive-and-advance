@@ -1,7 +1,7 @@
 [
 	{
 		"model":"empty",
-		"loot":[],
+		"loot":{},
 		"type":"void",
 		"id":"air",
 		"render_adj":true,
@@ -36,14 +36,14 @@
 		"model":"stone",
 		"loot":{
 			"rocks":[100,100,1000],
-			"coal":[80,0,-1000],
-			"copper ore":[60,0,-1000],
-			"iron ore":[40,0,-1000],
-			"gold ore":[20,0,-1000],
-			"rocks":[100,-1000,1000]
+			"coal":[80,0,-1],
+			"copper ore":[60,0,-1],
+			"iron ore":[40,0,-1],
+			"gold ore":[20,0,-1],
+			"rocks_":[100,-1,-1]
 		},
 		"type":"hard",
-		"mine":[1.0,0.2],
+		"mine":[1.0,5.0],
 		"id":"stone",
 		"render_adj":false,
 		"render":true,
