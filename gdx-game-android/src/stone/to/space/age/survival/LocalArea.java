@@ -5,6 +5,9 @@ import com.badlogic.gdx.graphics.*;
 import com.badlogic.gdx.utils.*;
 import com.badlogic.gdx.*;
 import com.badlogic.gdx.files.*;
+import com.badlogic.gdx.math.collision.*;
+import com.badlogic.gdx.math.*;
+import java.util.*;
 public class LocalArea
 {
 	TileSection[][][] TSa_001;
@@ -14,11 +17,15 @@ public class LocalArea
 	JSONObject JO_001;
 	JSONArray JA_001;
 	LocalArea l;
+	MyGdxGame core;
+	JSONArray entitydata;
 	boolean up,loading,uX,uY,uZ,que=true,load,loaded,loaded2;
 	Array<Thread>queue=new Array<Thread>();
-	public LocalArea(int radius,int setRadius,int X,int Y,int Z,OpenSimplexNoise OSN_001in,JSONArray JA_001in,JSONObject JO_001in,FileHandle savedirin)
+	public LocalArea(int radius,int setRadius,int X,int Y,int Z,OpenSimplexNoise OSN_001in,JSONArray JA_001in,JSONObject JO_001in,FileHandle savedirin,JSONArray entitydatain,MyGdxGame corein)
 	{
 		progress=0;
+		core=corein;
+		entitydata=entitydatain;
 		loaded=false;
 		loaded=false;
 		JO_001=JO_001in;
@@ -45,7 +52,7 @@ public class LocalArea
 					{
 						for(int for_003 = 0;for_003<AS;for_003++)
 						{
-							TSa_001[for_001][for_002][for_003]=new TileSection((AX+for_001)-AR,(AY+for_002)-AR,(AZ+for_003)-AR,OSN_001,JA_001,JO_001,SR,savedir);
+							TSa_001[for_001][for_002][for_003]=new TileSection((AX+for_001)-AR,(AY+for_002)-AR,(AZ+for_003)-AR,OSN_001,JA_001,JO_001,SR,savedir,entitydata,core);
 							progress++;
 						}
 					}
@@ -70,6 +77,20 @@ public class LocalArea
 			}
 		}.start();
 	}
+	public void save()
+	throws JSONException
+	{
+		for(int for_001 = 0;for_001<AS;for_001++)
+		{
+			for(int for_002 = 0;for_002<AS;for_002++)
+			{
+				for(int for_003 = 0;for_003<AS;for_003++)
+				{
+					TSa_001[for_001][for_002][for_003].save();
+				}
+			}
+		}
+	}
 	private void setrender()
 	{
 		int temp_001=AS-1;
@@ -85,7 +106,7 @@ public class LocalArea
 			}
 		}
 	}
-	public void render(ModelBatch MB_001,Environment E_001,Camera C_001,Array <ModelInstance> MIs_001,JSONObject JO_001)
+	public void render(ModelBatch MB_001,Environment E_001,Camera C_001,Array <ModelInstance> MIs_001,JSONObject JO_001,JSONArray entites,MyGdxGame core,Array<Model> entmods)
 	throws JSONException
 	{
 		int temp_001=AS-1;
@@ -97,7 +118,7 @@ public class LocalArea
 				{
 					try
 					{
-						TSa_001[for_001][for_002][for_003].render(MB_001,E_001,C_001,MIs_001,JO_001);
+						TSa_001[for_001][for_002][for_003].render(MB_001,E_001,C_001,MIs_001,JO_001,entites,this,core,entmods);
 					}
 					catch(NullPointerException e)
 					{}
@@ -142,7 +163,7 @@ public class LocalArea
 									}
 									catch(ArrayIndexOutOfBoundsException e)
 									{
-										TSa_001[for_001][for_002][for_003]=new TileSection((AX+for_001)-AR,(AY+for_002)-AR,(AZ+for_003)-AR,OSN_001,JA_001,JO_001,SR,savedir);
+										TSa_001[for_001][for_002][for_003]=new TileSection((AX+for_001)-AR,(AY+for_002)-AR,(AZ+for_003)-AR,OSN_001,JA_001,JO_001,SR,savedir,entitydata,core);
 									}
 									upZ++;
 								}
@@ -168,7 +189,7 @@ public class LocalArea
 									}
 									catch(ArrayIndexOutOfBoundsException e)
 									{
-										TSa_001[for_001][for_002][for_003]=new TileSection((AX+for_001)-AR,(AY+for_002)-AR,(AZ+for_003)-AR,OSN_001,JA_001,JO_001,SR,savedir);
+										TSa_001[for_001][for_002][for_003]=new TileSection((AX+for_001)-AR,(AY+for_002)-AR,(AZ+for_003)-AR,OSN_001,JA_001,JO_001,SR,savedir,entitydata,core);
 									}
 									upZ++;
 								}
@@ -222,7 +243,7 @@ public class LocalArea
 									}
 									catch(ArrayIndexOutOfBoundsException e)
 									{
-										TSa_001[for_001][for_002][for_003]=new TileSection((AX+for_001)-AR,(AY+for_002)-AR,(AZ+for_003)-AR,OSN_001,JA_001,JO_001,SR,savedir);
+										TSa_001[for_001][for_002][for_003]=new TileSection((AX+for_001)-AR,(AY+for_002)-AR,(AZ+for_003)-AR,OSN_001,JA_001,JO_001,SR,savedir,entitydata,core);
 									}
 									upZ++;
 								}
@@ -248,7 +269,7 @@ public class LocalArea
 									}
 									catch(ArrayIndexOutOfBoundsException e)
 									{
-										TSa_001[for_001][for_002][for_003]=new TileSection((AX+for_001)-AR,(AY+for_002)-AR,(AZ+for_003)-AR,OSN_001,JA_001,JO_001,SR,savedir);
+										TSa_001[for_001][for_002][for_003]=new TileSection((AX+for_001)-AR,(AY+for_002)-AR,(AZ+for_003)-AR,OSN_001,JA_001,JO_001,SR,savedir,entitydata,core);
 									}
 									upZ++;
 								}
@@ -264,6 +285,55 @@ public class LocalArea
 					que=true;
 				}
 			});
+	}
+	public Array<Entity> checkents(Ray R,Array<ModelInstance> es)
+	{
+		Array<Entity> ret=new  Array<Entity>();
+		for(int i1=0;i1<3;i1++)
+		{
+			for(int i2=0;i2<3;i2++)
+			{
+				for(int i3=0;i3<3;i3++)
+				{
+					Array<Entity> ents=TSa_001[AR+i1][AR+i2][AR+i3].ents;
+					Iterator<Entity> it=ents.iterator();
+					while(it.hasNext())
+					{
+						Entity ent=it.next();
+						es.get(ent.id).transform.setToTranslation(ent.X,ent.Y,ent.Z);
+						BoundingBox bb=new BoundingBox();
+						bb=es.get(ent.id).calculateBoundingBox(bb);
+						float yd=(bb.getDimensions(new Vector3()).y/2)-0.5f;
+						float bx=ent.X,by=ent.Y+yd,bz=ent.Z,dx=bb.getDimensions(new Vector3()).x/2,dy=bb.getDimensions(new Vector3()).y/2,dz=bb.getDimensions(new Vector3()).z/2;
+						boolean b=Intersector.intersectRayBoundsFast(R,new BoundingBox(new Vector3(bx-dx,by-dy,bz-dz),new Vector3(bx+dx,by+dy,bz+dz)));
+						if(b)
+							ret.add(ent);
+					}
+					ents=TSa_001[AR+i1][AR+i2][AR+i3].pents;
+					it=ents.iterator();
+					while(it.hasNext())
+					{
+						Entity ent=it.next();
+						es.get(ent.id).transform.setToTranslation(ent.X,ent.Y,ent.Z);
+						BoundingBox bb=new BoundingBox();
+						bb=es.get(ent.id).calculateBoundingBox(bb);
+						float yd=(bb.getDimensions(new Vector3()).y/2)-0.5f;
+						float bx=ent.X,by=ent.Y+yd,bz=ent.Z,dx=bb.getDimensions(new Vector3()).x/2,dy=bb.getDimensions(new Vector3()).y/2,dz=bb.getDimensions(new Vector3()).z/2;
+						if(ent.id==0)
+						{
+							dx=0.5f;
+							dy=0.5f;
+							dz=0.5f;
+							yd=0;
+						}
+						boolean b=Intersector.intersectRayBoundsFast(R,new BoundingBox(new Vector3(bx-dx,by-dy,bz-dz),new Vector3(bx+dx,by+dy,bz+dz)));
+						if(b)
+							ret.add(ent);
+					}
+				}
+			}
+		}
+		return ret;
 	}
 	public void ShiftFront()
 	{
@@ -302,7 +372,7 @@ public class LocalArea
 									}
 									catch(ArrayIndexOutOfBoundsException e)
 									{
-										TSa_001[for_001][for_002][for_003]=new TileSection((AX+for_001)-AR,(AY+for_002)-AR,(AZ+for_003)-AR,OSN_001,JA_001,JO_001,SR,savedir);
+										TSa_001[for_001][for_002][for_003]=new TileSection((AX+for_001)-AR,(AY+for_002)-AR,(AZ+for_003)-AR,OSN_001,JA_001,JO_001,SR,savedir,entitydata,core);
 									}
 									upZ++;
 								}
@@ -328,7 +398,7 @@ public class LocalArea
 									}
 									catch(ArrayIndexOutOfBoundsException e)
 									{
-										TSa_001[for_001][for_002][for_003]=new TileSection((AX+for_001)-AR,(AY+for_002)-AR,(AZ+for_003)-AR,OSN_001,JA_001,JO_001,SR,savedir);
+										TSa_001[for_001][for_002][for_003]=new TileSection((AX+for_001)-AR,(AY+for_002)-AR,(AZ+for_003)-AR,OSN_001,JA_001,JO_001,SR,savedir,entitydata,core);
 									}
 									upZ++;
 								}
@@ -382,7 +452,7 @@ public class LocalArea
 									}
 									catch(ArrayIndexOutOfBoundsException e)
 									{
-										TSa_001[for_001][for_002][for_003]=new TileSection((AX+for_001)-AR,(AY+for_002)-AR,(AZ+for_003)-AR,OSN_001,JA_001,JO_001,SR,savedir);
+										TSa_001[for_001][for_002][for_003]=new TileSection((AX+for_001)-AR,(AY+for_002)-AR,(AZ+for_003)-AR,OSN_001,JA_001,JO_001,SR,savedir,entitydata,core);
 									}
 									upZ++;
 								}
@@ -408,7 +478,7 @@ public class LocalArea
 									}
 									catch(ArrayIndexOutOfBoundsException e)
 									{
-										TSa_001[for_001][for_002][for_003]=new TileSection((AX+for_001)-AR,(AY+for_002)-AR,(AZ+for_003)-AR,OSN_001,JA_001,JO_001,SR,savedir);
+										TSa_001[for_001][for_002][for_003]=new TileSection((AX+for_001)-AR,(AY+for_002)-AR,(AZ+for_003)-AR,OSN_001,JA_001,JO_001,SR,savedir,entitydata,core);
 									}
 									upZ++;
 								}
@@ -462,7 +532,7 @@ public class LocalArea
 									}
 									catch(ArrayIndexOutOfBoundsException e)
 									{
-										TSa_001[for_001][for_002][for_003]=new TileSection((AX+for_001)-AR,(AY+for_002)-AR,(AZ+for_003)-AR,OSN_001,JA_001,JO_001,SR,savedir);
+										TSa_001[for_001][for_002][for_003]=new TileSection((AX+for_001)-AR,(AY+for_002)-AR,(AZ+for_003)-AR,OSN_001,JA_001,JO_001,SR,savedir,entitydata,core);
 									}
 									upZ++;
 								}
@@ -488,7 +558,7 @@ public class LocalArea
 									}
 									catch(ArrayIndexOutOfBoundsException e)
 									{
-										TSa_001[for_001][for_002][for_003]=new TileSection((AX+for_001)-AR,(AY+for_002)-AR,(AZ+for_003)-AR,OSN_001,JA_001,JO_001,SR,savedir);
+										TSa_001[for_001][for_002][for_003]=new TileSection((AX+for_001)-AR,(AY+for_002)-AR,(AZ+for_003)-AR,OSN_001,JA_001,JO_001,SR,savedir,entitydata,core);
 									}
 									upZ++;
 								}
@@ -542,7 +612,7 @@ public class LocalArea
 									}
 									catch(ArrayIndexOutOfBoundsException e)
 									{
-										TSa_001[for_001][for_002][for_003]=new TileSection((AX+for_001)-AR,(AY+for_002)-AR,(AZ+for_003)-AR,OSN_001,JA_001,JO_001,SR,savedir);
+										TSa_001[for_001][for_002][for_003]=new TileSection((AX+for_001)-AR,(AY+for_002)-AR,(AZ+for_003)-AR,OSN_001,JA_001,JO_001,SR,savedir,entitydata,core);
 									}
 									upZ++;
 								}
@@ -568,7 +638,7 @@ public class LocalArea
 									}
 									catch(ArrayIndexOutOfBoundsException e)
 									{
-										TSa_001[for_001][for_002][for_003]=new TileSection((AX+for_001)-AR,(AY+for_002)-AR,(AZ+for_003)-AR,OSN_001,JA_001,JO_001,SR,savedir);
+										TSa_001[for_001][for_002][for_003]=new TileSection((AX+for_001)-AR,(AY+for_002)-AR,(AZ+for_003)-AR,OSN_001,JA_001,JO_001,SR,savedir,entitydata,core);
 									}
 									upZ++;
 								}
