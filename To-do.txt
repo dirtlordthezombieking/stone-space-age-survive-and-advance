@@ -1,22 +1,8 @@
-Next build:      77.890625%
+Next build:      79.765625%
 ·block models....✓
 ·player model....✓
 ·entities........✓
-·ui..............85.000000%
- ·graphics.......80.000000%
-  ·jump button...✓
-  ·dpad..........✓
-  ·settings......✓
-  ·menu..........✓
-  ·inventory.....00.000000%
- ·function.......90.000000%
-  ·jump button...✓
-  ·dpad..........✓
-  ·settings......✓
-  ·menu..........✓
-  ·inventory.....50.000000%
-   ·data.........✓
-   ·interaction..00.000000%
+·ui..............✓
 ·world gen.......✓
 ·gameplay........88.125000%
  ·collision......✓
